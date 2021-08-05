@@ -26,7 +26,7 @@
         flex-direction: row;
         height: 100%;
         width: 100%;
-        background-color: #eaeaea;
+        background-color: #f9f9f9;
     }
 
     img {
