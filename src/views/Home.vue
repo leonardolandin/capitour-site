@@ -12,11 +12,11 @@ export default {
   data () {
     return {
       images: [
-        '@/assets/slides/1.jpg',
-        '@/assets/slides/2.jpg',
-        '@/assets/slides/3.jpg',
-        '@/assets/slides/4.jpg',
-        '@/assets/slides/5.jpg'
+        'https://i.imgur.com/PQBuVOS.jpg',
+        'https://i.imgur.com/ezXmvK5.jpg',
+        'https://i.imgur.com/VZPQmv5.jpg',
+        'https://i.imgur.com/uyXz9by.jpg',
+        'https://i.imgur.com/e2YQ6Xy.jpg'
       ]
     }
   }
