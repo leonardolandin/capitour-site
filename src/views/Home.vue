@@ -1,14 +1,14 @@
 <template>
   <div class="home">
-    <Slider :images="this.images"/>
+    <Opinion />
   </div>
 </template>
 
 <script>
-import Slider from '@/components/Slider.vue'
+import Opinion from '@/components/Opinion.vue'
 
 export default {
-  components: { Slider },
+  components: { Opinion },
   data () {
     return {
       images: [
@@ -22,3 +22,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .home {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+  }
+</style>

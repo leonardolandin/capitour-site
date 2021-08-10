@@ -15,6 +15,14 @@ export default {
 body {
   margin: 0;
   overflow-y: auto;
+  width: 100vw;
+  height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 250, 250, 0.5)
+    ),
+    url("./assets/wallpaper.jpg")
 }
 
 #app {
@@ -23,6 +31,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  opacity: 1;
 }
 
 #nav {
