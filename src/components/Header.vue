@@ -7,6 +7,8 @@
             <li> <a href="/quadriciclo">Passeio Quadriciclo</a></li>
             <li> <a href="/banana-boat">Passeio Banana Boat</a></li>
             <li> <a href="/lancha">Passeio Lancha</a></li>
+            <li> <a href="/lancha">Passeio 4X4</a></li>
+            <li> <a href="/lancha">Capitólio e Serra da Canastra</a></li>
             <li> <a href="/rapel">Rapel</a></li>
         </ul>
     </nav>
@@ -31,14 +33,13 @@
 
     img {
         height: 136px;
-        margin: 0 110px 0 45px;
+        margin: 0 0 0 45px;
     }
 
     ul {
         margin: 0;
         padding: 0;
         display: flex;
-        width: 50%;
         justify-content: center;
     }
 

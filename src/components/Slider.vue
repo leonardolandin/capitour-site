@@ -1,12 +1,10 @@
 <template>
-  <div>
-    <transition-group name="fade" tag="div">
+  <div class="containerSlide">
       <div v-for="i in [currentIndex]" :key="i">
         <img :src="`${currentImg}`" />
       </div>
-    </transition-group>
-    <a class="prev" @click="prev" href="#">&#10094; </a>
-    <a class="next" @click="next" href="#">&#10095; </a>
+      <a class="prev" @click="prev">&#10094; </a>
+      <a class="next" @click="next">&#10095; </a>
   </div>
 </template>
 
@@ -20,13 +18,7 @@ export default {
       currentIndex: 0
     }
   },
-  mounted: function () {
-    this.startSlide()
-  },
   methods: {
-    startSlide: function () {
-      this.timer = setInterval(this.next, 6000)
-    },
     next: function () {
       this.currentIndex += 1
     },
@@ -43,35 +35,12 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: all 0.9s ease;
-  overflow: hidden;
-  visibility: visible;
-  position: absolute;
-  width:100%;
-  opacity: 1;
-}
-
-.fade-enter,
-.fade-leave-to {
-  visibility: hidden;
-  width:100%;
-  opacity: 0;
-}
-
-img {
-  height:600px;
-  width:100%
-}
-
 .prev, .next {
   cursor: pointer;
-  position: absolute;
-  top: 40%;
+  position: relative;
   width: auto;
   padding: 16px;
-  color: white;
+  color: black;
   font-weight: bold;
   font-size: 18px;
   transition: 0.7s ease;
@@ -89,6 +58,24 @@ img {
 }
 
 .prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.9);
+  background-color: #066906;
+  color: white;
+}
+
+.containerSlide {
+  width: 100%;
+  height: 100%;
+}
+
+.containerSlide > div {
+  width: 100%;
+  height: 100%;
+}
+
+.containerSlide > div > img {
+  border: 6px solid #066906;
+  border-radius: 15px;
+  max-width: 700px;
+  max-height: 370px;
 }
 </style>

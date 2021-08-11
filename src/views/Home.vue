@@ -1,6 +1,6 @@
 <template>
-  <div class="home">
-    <Opinion />
+  <div class="home" v-for="opinion in opinions" :key="opinion.title">
+    <Opinion :opinion="opinion"/>
   </div>
 </template>
 
@@ -11,12 +11,22 @@ export default {
   components: { Opinion },
   data () {
     return {
-      images: [
-        'https://i.imgur.com/PQBuVOS.jpg',
-        'https://i.imgur.com/ezXmvK5.jpg',
-        'https://i.imgur.com/VZPQmv5.jpg',
-        'https://i.imgur.com/uyXz9by.jpg',
-        'https://i.imgur.com/e2YQ6Xy.jpg'
+      opinions: [
+        {
+          title: 'Hospedagem',
+          description: 'Eu gostei muito desse lugar',
+          images: [
+            'https://i.imgur.com/PQBuVOS.jpg',
+            'https://i.imgur.com/ezXmvK5.jpg',
+            'https://i.imgur.com/VZPQmv5.jpg',
+            'https://i.imgur.com/uyXz9by.jpg',
+            'https://i.imgur.com/e2YQ6Xy.jpg'
+          ],
+          date: new Date(),
+          user: 'Leonardo Landin',
+          home: true,
+          url: '/hospedagem'
+        }
       ]
     }
   }
