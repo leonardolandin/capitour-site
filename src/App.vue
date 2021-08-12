@@ -14,7 +14,7 @@ export default {
 <style>
 body {
   margin: 0;
-  overflow-y: auto;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   background-image: linear-gradient(
@@ -22,7 +22,8 @@ body {
       rgba(255, 255, 255, 0.5) 0%,
       rgba(255, 250, 250, 0.5)
     ),
-    url("./assets/wallpaper.jpg")
+    url("./assets/wallpaper.jpg");
+  background-size: cover;
 }
 
 #app {
@@ -32,6 +33,8 @@ body {
   text-align: center;
   color: #2c3e50;
   opacity: 1;
+  width: 100%;
+  height: 100%;
 }
 
 #nav {

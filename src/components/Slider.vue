@@ -1,10 +1,10 @@
 <template>
   <div class="containerSlide">
-      <div v-for="i in [currentIndex]" :key="i">
+      <div>
         <img :src="`${currentImg}`" />
       </div>
-      <a class="prev" @click="prev">&#10094; </a>
-      <a class="next" @click="next">&#10095; </a>
+      <a class="prev" v-if="images.length > 1" @click="prev">&#10094; </a>
+      <a class="next" v-if="images.length > 1" @click="next">&#10095; </a>
   </div>
 </template>
 
@@ -14,7 +14,6 @@ export default {
   props: ['images'],
   data () {
     return {
-      timer: null,
       currentIndex: 0
     }
   },
@@ -75,7 +74,17 @@ export default {
 .containerSlide > div > img {
   border: 6px solid #066906;
   border-radius: 15px;
-  max-width: 700px;
+  max-width: 340px;
   max-height: 370px;
+}
+
+@media only screen and (max-width: 414px) {
+  .next {
+    right: -60px;
+  }
+
+  .prev {
+    left: 60px;
+  }
 }
 </style>
