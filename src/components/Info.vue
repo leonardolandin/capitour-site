@@ -36,6 +36,10 @@ export default {
     align-items: flex-start;
 }
 
+p {
+    width: 290px;
+}
+
 @media only screen and (max-width: 414px) {
     .containerInfo {
         flex-direction: column;

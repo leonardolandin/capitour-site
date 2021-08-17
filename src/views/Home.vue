@@ -36,7 +36,7 @@ export default {
       ],
       conexao: {
         title: 'Conexão Aventura',
-        description: 'Resumo do que é / como funciona',
+        description: 'Venha conhecer as maravilhas do Mar de Minas, com suas Lindas Cachoeiras e Trilhas.',
         images: [
           'https://i.imgur.com/PQBuVOS.jpg'
         ]
