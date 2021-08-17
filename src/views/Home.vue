@@ -4,15 +4,17 @@
     <div class="opinions" v-for="opinion in opinions" :key="opinion.title">
       <Opinion :opinion="opinion"/>
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
 import Opinion from '@/components/Opinion.vue'
 import Info from '@/components/Info.vue'
 
 export default {
-  components: { Opinion, Info },
+  components: { Opinion, Info, Footer },
   data () {
     return {
       opinions: [
