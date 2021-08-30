@@ -4,15 +4,17 @@
     <div class="opinions" v-for="opinion in opinions" :key="opinion.title">
       <Opinion :opinion="opinion"/>
     </div>
+    <Footer/>
   </div>
 </template>
 
 <script>
+import Footer from '@/components/Footer.vue'
 import Opinion from '@/components/Opinion.vue'
 import Info from '@/components/Info.vue'
 
 export default {
-  components: { Opinion, Info },
+  components: { Opinion, Info, Footer },
   data () {
     return {
       opinions: [
@@ -34,7 +36,7 @@ export default {
       ],
       conexao: {
         title: 'Conexão Aventura',
-        description: 'Resumo do que é / como funciona',
+        description: 'Venha conhecer as maravilhas do Mar de Minas, com suas Lindas Cachoeiras e Trilhas.',
         images: [
           'https://i.imgur.com/PQBuVOS.jpg'
         ]
