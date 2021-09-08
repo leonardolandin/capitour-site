@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <a href="">
+        <a @click="selectOption(type)">
             <img :src="getImage(image)" :alt="name">
             <span>{{name}}</span>
         </a>
@@ -10,11 +10,16 @@
 <script>
 export default {
   name: 'ListOptions',
-  props: ['image', 'name'],
+  props: ['image', 'name', 'type'],
   methods: {
     getImage: (url) => {
       var images = require.context('../../assets/list/', false, /\.png$/)
       return images(`./${url}`)
+    },
+    selectOption (type) {
+      if (type) {
+        this.$emit('selectOption', type)
+      }
     }
   }
 }

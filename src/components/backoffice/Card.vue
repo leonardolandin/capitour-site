@@ -8,10 +8,10 @@
             <div title="Editar">
                 <img src="@/assets/card/edit.png">
             </div>
-            <div title="Remover">
+            <div title="Remover" v-if="false">
                 <img src="@/assets/card/remove.png">
             </div>
-            <div title="Ativar">
+            <div title="Ativar" v-else>
                 <img src="@/assets/card/accept.png">
             </div>
         </div>
@@ -32,6 +32,8 @@ export default {
         border-radius: 7px;
         padding: 10px;
         justify-content: space-between;
+        margin-bottom: 10px;
+        transition: all 0.9s;
     }
 
     .info {
@@ -57,6 +59,10 @@ export default {
         display: flex;
         flex-direction: row;
         align-items: center;
+    }
+
+    .actions > div {
+        margin: 10px;
     }
 
     img {
