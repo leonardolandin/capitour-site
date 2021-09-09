@@ -3,21 +3,66 @@
         <form>
             <div>
                 <label for="">Titulo</label>
-                <input type="text" name="" id="">
+                <input type="text" v-model="model.title">
             </div>
             <div>
                 <label for="">Descrição</label>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea cols="30" rows="10" v-model="model.description"></textarea>
             </div>
             <div>
                 <label for="">Imagem</label>
-                <input type="file" name="" id="">
+                <input type="file" @change="uploadImage">
             </div>
-
-            <button class="createInfo">Criar</button>
+            <button class="createInfo" @click="createAndEdit(model)">Criar</button>
         </form>
     </div>
 </template>
+
+<script>
+import Info from '@/services/Info.js'
+
+export default {
+  name: 'CreateAndEdit',
+  props: ['data'],
+  data () {
+    return {
+      model: this.data
+    }
+  },
+  methods: {
+    createAndEdit (model) {
+      if (model) {
+        if (model._id) {
+          Info.setEditInfo(model).then(response => {
+            console.log(response)
+          })
+        } else {
+          Info.setNewInfo(model).then(response => {
+            console.log(response)
+          })
+        }
+      }
+    },
+    uploadImage (e) {
+      if (e.target.files.length) {
+        this.setImage(e.target.files[0])
+      } else {
+        return false
+      }
+    },
+    setImage (file) {
+      const fileReader = new FileReader()
+
+      fileReader.onload = (e) => {
+        this.model.image.path = e.target.result
+        this.model.image.name = file.name
+      }
+
+      fileReader.readAsDataURL(file)
+    }
+  }
+}
+</script>
 
 <style scoped>
     form > div {

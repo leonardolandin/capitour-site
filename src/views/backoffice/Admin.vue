@@ -24,11 +24,11 @@
             </div>
           </div>
           <div>
-            <button class="createInfo" @click="createAndEdit({}, type)">Criar</button>
+            <button class="createInfo" @click="createAndEdit()">Criar</button>
           </div>
         </div>
         <div v-if="createAndEditVar">
-          <CreateAndEdit/>
+          <CreateAndEdit :data="info"/>
         </div>
     </div>
   </div>
@@ -82,7 +82,8 @@ export default {
         }
       ],
       type: null,
-      createAndEditVar: null
+      createAndEditVar: null,
+      info: {}
     }
   },
   methods: {
@@ -95,9 +96,8 @@ export default {
         })
       }
     },
-    createAndEdit (data, type) {
+    createAndEdit () {
       this.createAndEditVar = true
-      console.log(type)
     }
   }
 }
