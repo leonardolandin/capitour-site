@@ -28,7 +28,7 @@
           </div>
         </div>
         <div v-if="createAndEditVar">
-          <CreateAndEdit :data="info"/>
+          <CreateAndEdit :data="info" :type="type"/>
         </div>
     </div>
   </div>

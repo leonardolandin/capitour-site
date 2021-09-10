@@ -1,6 +1,6 @@
 <template>
     <div>
-        <form>
+        <form @submit="createAndEdit(model, $event)">
             <div>
                 <label for="">Titulo</label>
                 <input type="text" v-model="model.title">
@@ -13,7 +13,7 @@
                 <label for="">Imagem</label>
                 <input type="file" @change="uploadImage">
             </div>
-            <button class="createInfo" @click="createAndEdit(model)">Criar</button>
+            <input value="Criar" type="submit" class="createInfo">
         </form>
     </div>
 </template>
@@ -23,20 +23,22 @@ import Info from '@/services/Info.js'
 
 export default {
   name: 'CreateAndEdit',
-  props: ['data'],
+  props: ['data', 'type'],
   data () {
     return {
       model: this.data
     }
   },
   methods: {
-    createAndEdit (model) {
+    createAndEdit (model, e) {
+      e.preventDefault()
       if (model) {
         if (model._id) {
           Info.setEditInfo(model).then(response => {
             console.log(response)
           })
         } else {
+          this.model.type = this.type
           Info.setNewInfo(model).then(response => {
             console.log(response)
           })
@@ -54,8 +56,7 @@ export default {
       const fileReader = new FileReader()
 
       fileReader.onload = (e) => {
-        this.model.image.path = e.target.result
-        this.model.image.name = file.name
+        this.model.image = { path: e.target.result, name: file.name }
       }
 
       fileReader.readAsDataURL(file)
