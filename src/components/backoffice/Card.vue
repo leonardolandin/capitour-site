@@ -1,14 +1,14 @@
 <template>
     <div class="containerCard">
         <div class="info">
-            <span id="title">Titulo blablablablablabla blablablablablabla blablablablablabla blablablablablabla</span>
-            <span id="date">Data e hora</span>
+            <span id="title">{{info.title}}</span>
+            <span id="date">{{getDate(info.created)}}</span>
         </div>
         <div class="actions">
             <div title="Editar">
                 <img src="@/assets/card/edit.png">
             </div>
-            <div title="Remover" v-if="false">
+            <div title="Remover" v-if="info.active">
                 <img src="@/assets/card/remove.png">
             </div>
             <div title="Ativar" v-else>
@@ -20,7 +20,31 @@
 
 <script>
 export default {
-  name: 'Card'
+  name: 'Card',
+  props: ['info'],
+  methods: {
+    getDate (date) {
+      const dateFormat = new Date(date)
+      if (dateFormat) {
+        return `${this.addZero(dateFormat.getDay(), 'DAY')}/${this.addZero(dateFormat.getMonth() + 1, 'MONTH')}/${dateFormat.getFullYear()} ás ${dateFormat.getHours()}:${this.addZero(dateFormat.getMinutes(), 'MINUTES')}`
+      }
+    },
+    addZero (number, type) {
+      if (type === 'MONTH' || type === 'DAY') {
+        if (number <= 9) {
+          return `0${+number}`
+        } else {
+          return number
+        }
+      } else if (type === 'MINUTES') {
+        if (number.toString().length === 1) {
+          return `0${number}`
+        } else {
+          return number
+        }
+      }
+    }
+  }
 }
 </script>
 

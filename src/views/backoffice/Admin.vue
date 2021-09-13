@@ -9,18 +9,8 @@
       <div class="containerClear"><div class="clearLine"/></div>
         <div v-if="type != null && !createAndEditVar">
           <div class="sizeCards">
-            <div>
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
-              <Card />
+            <div v-for="item2 in infos" :key="item2._id">
+              <Card :info="item2" />
             </div>
           </div>
           <div>
@@ -83,7 +73,8 @@ export default {
       ],
       type: null,
       createAndEditVar: null,
-      info: {}
+      info: {},
+      infos: []
     }
   },
   methods: {
@@ -92,7 +83,7 @@ export default {
         this.type = type
         this.createAndEditVar = false
         Info.getByType(type).then(response => {
-          console.log(response)
+          this.infos = response.data
         })
       }
     },
