@@ -5,7 +5,7 @@
             <p>{{infos.description}}</p>
         </div>
         <div>
-            <Slider :images="infos.images"/>
+            <Slider v-if="infos.image.length" :images="infos.image"/>
         </div>
     </div>
 </template>

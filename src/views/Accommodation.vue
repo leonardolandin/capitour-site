@@ -6,18 +6,18 @@
     <div class="opinions" v-for="opinion in opinions" :key="opinion.title">
       <Opinion :opinion="opinion"/>
     </div>
-    <!-- <Footer/> -->
+    <Footer/>
   </div>
 </template>
 
 <script>
-// import Footer from '@/components/Footer.vue'
+import Footer from '@/components/Footer.vue'
 import Opinion from '@/components/Opinion.vue'
 import Info from '@/components/Info.vue'
 import InfoService from '@/services/Info'
 
 export default {
-  components: { Opinion, Info },
+  components: { Opinion, Info, Footer },
   data () {
     return {
       opinions: [],
@@ -25,8 +25,7 @@ export default {
     }
   },
   mounted () {
-    this.$router.push('/hospedagem')
-    InfoService.getByType('').then(response => {
+    InfoService.getByType('ACCOMMODATION').then(response => {
       response.data.filter(item => {
         if (item.image.path) {
           const url = item.image.path

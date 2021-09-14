@@ -1,24 +1,23 @@
 <template>
     <div class="containerCard">
         <div class="info">
-            <span id="title">{{info.title}}</span>
-            <span id="date">{{getDate(info.created)}}</span>
+            <span id="title">{{data.title}}</span>
+            <span id="date">{{getDate(data.created)}}</span>
         </div>
         <div class="actions">
             <div title="Editar">
-                <img src="@/assets/card/edit.png">
+                <img src="@/assets/card/edit.png" @click="editInfo(data)">
             </div>
-            <div title="Remover" v-if="info.active">
-                <img src="@/assets/card/remove.png">
-            </div>
-            <div title="Ativar" v-else>
-                <img src="@/assets/card/accept.png">
+            <div :title="data.active ? 'Desativar' : 'Ativar'">
+                <img :src="data.active ? getImage('remove.png') : getImage('accept.png')" @click="updateStatus({ _id: data._id, active: !data.active })">
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import InfoService from '@/services/Info'
+
 export default {
   name: 'Card',
   props: ['info'],
@@ -43,6 +42,25 @@ export default {
           return number
         }
       }
+    },
+    getImage (url) {
+      var images = require.context('../../assets/card/', false, /\.png$/)
+      return images(`./${url}`)
+    },
+    updateStatus (status) {
+      if (status) {
+        InfoService.updateStatus(status).then(response => {
+          this.data.active = !this.data.active
+        })
+      }
+    },
+    editInfo (info) {
+      this.$emit('editInfo', info)
+    }
+  },
+  data () {
+    return {
+      data: this.info
     }
   }
 }
@@ -92,5 +110,12 @@ export default {
     img {
         height: 35px;
         cursor: pointer;
+    }
+
+    @media only screen and (max-width: 414px) {
+        .containerCard {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 </style>

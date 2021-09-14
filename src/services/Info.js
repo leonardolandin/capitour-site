@@ -9,5 +9,8 @@ export default {
   },
   setNewInfo: (data) => {
     return http.put('newInfo', data)
+  },
+  updateStatus: (data) => {
+    return http.post('setStatus', data)
   }
 }

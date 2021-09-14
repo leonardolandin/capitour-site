@@ -8,17 +8,20 @@
       </div>
       <div class="containerClear"><div class="clearLine"/></div>
         <div v-if="type != null && !createAndEditVar">
-          <div class="sizeCards">
+          <div class="sizeCards" v-if="infos.length">
             <div v-for="item2 in infos" :key="item2._id">
-              <Card :info="item2" />
+              <Card :info="item2" @editInfo="eventEdit" />
             </div>
+          </div>
+          <div v-else class="sizeCards">
+            <span>Não existe informações criadas para essa categoria.</span>
           </div>
           <div>
             <button class="createInfo" @click="createAndEdit()">Criar</button>
           </div>
         </div>
-        <div v-if="createAndEditVar">
-          <CreateAndEdit :data="info" :type="type"/>
+        <div v-if="createAndEditVar" class="mobileCreate">
+          <CreateAndEdit :data="info" :type="type" @success="close"/>
         </div>
     </div>
   </div>
@@ -87,8 +90,17 @@ export default {
         })
       }
     },
-    createAndEdit () {
+    createAndEdit (info) {
+      if (info !== null && info !== undefined) {
+        this.info = info
+      }
       this.createAndEditVar = true
+    },
+    eventEdit (info) {
+      this.createAndEdit(info)
+    },
+    close () {
+      this.createAndEditVar = false
     }
   }
 }
@@ -147,5 +159,38 @@ export default {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 40px;
+  }
+
+  @media only screen and (max-width: 414px) {
+    .container {
+      width: 70%;
+      flex-direction: column;
+      height: auto;
+      padding: 50px;
+      margin-top: 220px;
+    }
+
+    .clearLine {
+      border-right: none !important;
+      border-left: none !important;
+      border: 1px solid #e4e4e4;
+      width: 100%;
+      height: 6px;
+    }
+
+    .sizeCards {
+      margin-top: 10px;
+      overflow: hidden;
+      max-height: 270px;
+    }
+
+    .background {
+      max-height: 86%;
+      overflow: auto;
+    }
+
+    .mobileCreate {
+      margin-top: 20px;
+    }
   }
 </style>

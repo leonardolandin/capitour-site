@@ -35,12 +35,12 @@ export default {
       if (model) {
         if (model._id) {
           Info.setEditInfo(model).then(response => {
-            console.log(response)
+            this.$emit('success')
           })
         } else {
           this.model.type = this.type
           Info.setNewInfo(model).then(response => {
-            console.log(response)
+            this.$emit('success')
           })
         }
       }
