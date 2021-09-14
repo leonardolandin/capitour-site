@@ -22,47 +22,74 @@ const routes = [
   {
     path: '/hospedagem',
     name: 'Accommodation',
-    component: Accommodation
+    component: Accommodation,
+    meta: {
+      title: 'Hospedagem'
+    }
   },
   {
     path: '/quadriciclo',
     name: 'Quadricycle',
-    component: Quadricycle
+    component: Quadricycle,
+    meta: {
+      title: 'Quadriciclo'
+    }
   },
   {
     path: '/banana-boat',
     name: 'BananaBoat',
-    component: BananaBoat
+    component: BananaBoat,
+    meta: {
+      title: 'Banana Boat'
+    }
   },
   {
     path: '/lancha',
     name: 'Boat',
-    component: Boat
+    component: Boat,
+    meta: {
+      title: 'Lancha'
+    }
   },
   {
     path: '/passeio-4x4',
     name: '4X4',
-    component: X4
+    component: X4,
+    meta: {
+      title: '4X4'
+    }
   },
   {
     path: '/capitolio-e-serra-da-canastra',
     name: '4X4',
-    component: Capitolio
+    component: Capitolio,
+    meta: {
+      title: 'Capitolio e Serra da canastra'
+    }
   },
   {
     path: '/rapel',
     name: 'Rapel',
-    component: Rapel
+    component: Rapel,
+    meta: {
+      title: 'Rapel'
+    }
   },
   {
     path: '/entrar',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: {
+      title: 'Login'
+    }
   },
   {
     path: '/admin',
     name: 'Admin',
-    component: Admin
+    component: Admin,
+    meta: {
+      title: 'Administração'
+    }
   }
 ]
 
