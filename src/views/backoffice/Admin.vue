@@ -32,6 +32,7 @@ import ListOption from '@/components/backoffice/ListOptions.vue'
 import Card from '@/components/backoffice/Card.vue'
 import CreateAndEdit from '@/components/backoffice/CreateAndEdit.vue'
 import Info from '@/services/Info.js'
+import Auth from '@/services/Auth.js'
 
 export default {
   components: { ListOption, Card, CreateAndEdit },
@@ -102,6 +103,12 @@ export default {
     close () {
       this.createAndEditVar = false
     }
+  },
+  mounted () {
+    Auth.verifyToken(localStorage.getItem('token')).then(response => {
+    }).catch(() => {
+      this.$router.push('/entrar')
+    })
   }
 }
 </script>
