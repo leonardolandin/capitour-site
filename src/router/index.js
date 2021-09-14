@@ -6,7 +6,7 @@ import Accommodation from '@/views/Accommodation.vue'
 import Quadricycle from '@/views/Quadricycle.vue'
 import BananaBoat from '@/views/BananaBoat.vue'
 import Boat from '@/views/Boat.vue'
-import X4 from '@/views/X4.vue'
+import FourXFour from '@/views/FourXFour.vue'
 import Capitolio from '@/views/Capitolio.vue'
 import Rapel from '@/views/Rapel.vue'
 
@@ -53,15 +53,15 @@ const routes = [
   },
   {
     path: '/passeio-4x4',
-    name: '4X4',
-    component: X4,
+    name: 'FourXFour',
+    component: FourXFour,
     meta: {
       title: '4X4'
     }
   },
   {
     path: '/capitolio-e-serra-da-canastra',
-    name: '4X4',
+    name: 'Capitolio',
     component: Capitolio,
     meta: {
       title: 'Capitolio e Serra da canastra'
